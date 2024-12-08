@@ -36,10 +36,11 @@ ls;
 %画像の読み込み
 img4D = dicomreadVolume(currentfolderpath);
 img3D = squeeze(img4D);
+img3D = flip(img3D, 3);
 
 num_imges = size(img3D, 3);
 
-%初期画像の表示
+%初期画像表示
 currentimg = 1;
 hfig = figure(1);
 himg = imagesc(img3D(:,:,currentimg));
@@ -77,6 +78,7 @@ while ishandle(hfig)
             num_imges = size(img3D, 3);
 
         case 'q'
+            close(hfig);
             break;    
 
         otherwise
@@ -85,7 +87,5 @@ while ishandle(hfig)
 
      % 画像を更新して表示
     set(himg, 'CData', img3D(:,:,currentimg));
-    title([folderList(currentfolderIndex).name,' Image ', num2str(currentimg)]);
+    title([folderList(currentfolderIndex).name, ' Image ', num2str(currentimg)]);
 end
-
-
