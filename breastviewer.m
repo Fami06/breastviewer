@@ -66,6 +66,7 @@ while ishandle(hfig)
             currentfolderpath = fullfile(parentfolderPath, folderList(currentfolderIndex).name);
             img4D = dicomreadVolume(currentfolderpath);
             img3D = squeeze(img4D);
+            img3D = flip(img3D, 3);
 
             num_imges = size(img3D, 3);
 
@@ -74,6 +75,7 @@ while ishandle(hfig)
             currentfolderpath = fullfile(parentfolderPath, folderList(currentfolderIndex).name);
             img4D = dicomreadVolume(currentfolderpath);
             img3D = squeeze(img4D);
+            img3D = flip(img3D, 3);
 
             num_imges = size(img3D, 3);
 
